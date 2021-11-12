@@ -1,0 +1,12 @@
+.banner-main-wrap{
+    border-bottom: 5px solid #00ffa2;
+}
+
+.banar_text{
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 15px 30px;
+    color: #00ffa2;
+}
+.banar_text p{
+    font-size: 18px;
+}
