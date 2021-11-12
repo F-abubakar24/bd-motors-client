@@ -1,11 +1,10 @@
 import { CircularProgress } from "@mui/material";
 import React from "react";
 import { Redirect, Route } from "react-router";
-import useFirebase from "../../../hooks/useFirebase";
-// import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { user, loading } = useFirebase();
+    const { user, loading } = useAuth();
     if (loading) {
         return loading && <div style={{textAlign: 'center', margin: 'auto',}}><CircularProgress sx={{ mt: 50}} /></div>
     }

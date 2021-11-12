@@ -3,20 +3,20 @@ import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './Services.css';
 
-const Service = ({ hotel }) => {
-    const { description, img, title, _id, price } = hotel;
+const Bike = ({ hotel }) => {
+    const { description, pic, name, _id, price } = hotel;
 
     return (
         <div>
             <Col>
                 <Card className="hotel_img">
-                    <Card.Img className="service_img mx-auto" variant="top" src={img} />
+                    <Card.Img className="service_img mx-auto" variant="top" src={pic} />
                     <Card.Body className="card_body">
-                        <Card.Title className="">{title}</Card.Title>
+                        <Card.Title className="">{name}</Card.Title>
                         <Card.Text>
                             {description}
                         </Card.Text>
-                        <Link className="readmore_btn" to={`/hotelDetails/${_id}`}>Book</Link>
+                        <Link className="readmore_btn" to={`/hotelDetails/${_id}`}>Buy Now</Link>
                         <p className="d-inline float-end fw-bold hotel-price">{"$"+price}</p>
                     </Card.Body>
                 </Card>
@@ -25,4 +25,4 @@ const Service = ({ hotel }) => {
     );
 };
 
-export default Service;
+export default Bike;

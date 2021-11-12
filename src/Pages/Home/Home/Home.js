@@ -1,4 +1,5 @@
 import React from 'react';
+import Bikes from '../../Bikes/Bikes';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import AboutBike from '../AboutBike/AboutBike';
@@ -10,6 +11,7 @@ const Home = () => {
             <Header></Header>
             <Banner></Banner>
             <AboutBike></AboutBike>
+            <Bikes></Bikes>
             <Footer></Footer>
         </div>
     );

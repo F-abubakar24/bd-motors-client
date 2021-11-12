@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
-import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
+import BikesMain from "./Pages/Bikes/BikesMain";
 
 function App() {
   return (
@@ -26,6 +26,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="/bikes">
+              <BikesMain></BikesMain>
             </Route>
 
 

@@ -22,10 +22,8 @@ const Header = () => {
                             <NavDropdown.Item as={HashLink} to="/home#services">Hotels</NavDropdown.Item>
                             <NavDropdown.Item as={HashLink} to="/home#works">Works</NavDropdown.Item>
                         </NavDropdown> */}
-                        {/* <Nav.Link as={HashLink} to="/home#services">Services</Nav.Link> */}
                         <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/aboutUs">AboutUs</Nav.Link>
-                        <Nav.Link as={HashLink} to="/contact">Contact</Nav.Link>
+                        <Nav.Link as={HashLink} to="/bikes">Bikes</Nav.Link>
                         {user?.email ?
                             <>
                                 <p className="user_display_name">{user.displayName || user.email} -</p>

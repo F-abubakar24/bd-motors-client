@@ -2,22 +2,22 @@
     padding: 20px;
 }
 .card_body> a{
-    color: #01B7F2;
+    color: #1BA370;
 }
 .hotel-price{
-    color: #01B7F2;
+    color: #1BA370;
 }
 .readmore_btn{
     text-decoration: none;
     padding: 5px 20px;
     border-radius: 5px;
-    border: 2px solid #01B7F2;
+    border: 2px solid #1BA370;
     margin-bottom: 30px !important;
     font-weight: 700;
     transition: .4s;
 }
 .readmore_btn:hover{
-    background-color: #2D3E52;
+    background-color: #1BA370;
     color: white;
 }
 

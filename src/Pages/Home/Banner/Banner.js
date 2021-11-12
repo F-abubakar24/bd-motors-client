@@ -35,7 +35,7 @@ const Banner = () => {
                     <Carousel.Caption>
                         <div className="banar_text text-start">
                             <h4>Find the Best Motorbike</h4>
-                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, Dainese, Richa, Alpinestars, and more</p>
+                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, and more</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -49,7 +49,7 @@ const Banner = () => {
                     <Carousel.Caption>
                         <div className="banar_text text-start">
                             <h4>Find the Best Motorbike</h4>
-                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, Dainese, Richa, Alpinestars, and more</p>
+                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, and more</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -63,7 +63,7 @@ const Banner = () => {
                     <Carousel.Caption>
                         <div className="banar_text text-start">
                             <h4>Find the Best Motorbike</h4>
-                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, Dainese, Richa, Alpinestars, and more</p>
+                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, and more</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -77,7 +77,7 @@ const Banner = () => {
                     <Carousel.Caption>
                         <div className="banar_text text-start">
                             <h4>Find the Best Motorbike</h4>
-                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, Dainese, Richa, Alpinestars, and more</p>
+                            <p>Browse our range of Gore-Tex motorcycle clothing including Rukka, and more</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
