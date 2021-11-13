@@ -7,7 +7,7 @@
 - This is fully Responsive and dynamic website
 - This project is a single page application made by react
 - This Project is fullstack website and every data i load from database `mongodb`
-- This website has lot of feature example: ( `User Login System`, `user management dashboard`, `admin management dashboard`)
+- This website has lot of feature example: `User Login System`, `user management dashboard`, `admin management dashboard`
 - every users see his own data
 - admin have a spacial power to edit on this website
 
@@ -17,7 +17,7 @@
 - React
 - React Bootstrap
 - Meterial ui
-- Firebase for (`Login system`)
+- Firebase for `Login system`
 - React router dom `v-5.3.0`
 
 

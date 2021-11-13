@@ -16,6 +16,29 @@ const OrderManage = () => {
     }, [user.email, token]);
 
 
+    // manage DELETE
+    const handleDelete = (id) => {
+        const isSure = window.confirm("Are You sure, You want to delete");
+        if (isSure) {
+            fetch(`https://bd-motors.herokuapp.com/orders/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.deletedCount) {
+                        const remaining = orders.filter(
+                            (order) => order._id !== id
+                        );
+                        setOrders(remaining);
+                        alert("Deleted Successfully");
+                    } else {
+                        alert("Failed to delete, please try again");
+                    }
+                });
+        }
+    };
+
+
     return (
         <div>
             {!user.email ? (
@@ -25,7 +48,7 @@ const OrderManage = () => {
             ) : (
                 <div>
                     <h3 style={{ textAlign: "center", marginBottom: '20px'}}>
-                        My Orders: {orders.length}
+                        Users All Orders: {orders.length}
                     </h3>
                     <TableContainer component={Paper}>
                         <Table sx={{}} aria-label="orders table">
@@ -61,8 +84,23 @@ const OrderManage = () => {
                                         </TableCell>
 
                                         <TableCell align="right">
-                                            <span className="delete_icon">
-                                                <i className="far fa-trash-alt" ></i>
+                                            <samp
+                                                // onClick={ () => handleStatus(row._id)}
+                                                style={{
+                                                    marginRight: '10px',
+                                                    backgroundColor: '#1BA370',
+                                                    border: '1px solid black',
+                                                    borderRadius: '5px',
+                                                    padding: '2px 5px',
+                                                    color: 'white',
+                                                    cursor: 'pointer',
+                                                }}>
+                                                {row.status}
+                                            </samp>
+                                            <span>
+                                                <i style={{color: 'red', cursor: 'pointer',}} onClick={() =>
+                                                        handleDelete(row._id)
+                                                    } className="far fa-trash-alt" ></i>
                                             </span>
                                         </TableCell>
                                     </TableRow>
