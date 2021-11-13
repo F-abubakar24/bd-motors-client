@@ -1,0 +1,9 @@
+/* .layout-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+} */
+.nav_active_style{
+    border: 2px solid red;
+}

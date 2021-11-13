@@ -1,13 +1,14 @@
 import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Header from '../../Shared/Header/Header';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({})
-    const { createUser, loading, user, authError } = useAuth()
+    const { createUser, loading, user, authError, googleSignIn } = useAuth()
 
+    const location = useLocation();
     const history = useHistory()
     
     const handleFormOnBlur = e => {
@@ -28,6 +29,10 @@ const Register = () => {
         e.preventDefault();
     };
 
+    // google popup sign
+    const handleGoogleSignIn = () => {
+        googleSignIn(location, history);
+    }
 
     return (
         <>
@@ -35,71 +40,83 @@ const Register = () => {
                 <Header></Header>
             </div>
             <Container>
-                <Grid container spacing={2}>
-                    <Grid item sx={{ mt: 15, textAlign: "center" }} xs={12} md={6}>
-                        <Typography variant="body1" gutterBottom>
-                            Login
+                <Grid container spacing={3}>
+                    <Grid item sx={{ mt: 0, textAlign: "center" }} xs={0} sm={3} md={3} >
+                    </Grid>
+                    <Grid item sx={{ mt: 10, textAlign: "center" }} xs={12} sm={6} md={6} >
+                        <Typography variant="h5" gutterBottom>
+                            Register
                         </Typography>
 
                         {
                             !loading &&
-                            <form onSubmit={handleLoginInputSubmit}>
+                            <form style={{width: '90%', margin: '0 auto'}} onSubmit={handleLoginInputSubmit}>
                                 <TextField
-                                    sx={{ width: "75%", m: 1 }}
-                                    id="standard-basic"
+                                    id="outlined-basic"
+                                    variant="outlined"
+                                    sx={{ width: "100%", m: 1 }}
                                     label="Your Name"
-                                    variant="standard"
                                     name="name"
                                     onBlur={handleFormOnBlur}
                                 />
                                 <TextField
-                                    sx={{ width: "75%", m: 1 }}
-                                    id="standard-basic"
+                                    id="outlined-basic"
+                                    variant="outlined"
+                                    sx={{ width: "100%", m: 1 }}
                                     label="Email"
-                                    variant="standard"
                                     name="email"
                                     type="email"
                                     onBlur={handleFormOnBlur}
                                 />
                                 <TextField
-                                    sx={{ width: "75%", m: 1 }}
+                                    id="outlined-basic"
+                                    variant="outlined"
+                                    sx={{ width: "100%", m: 1 }}
                                     type="password"
-                                    id="standard-basic"
                                     label="Your Password"
-                                    variant="standard"
                                     name="password"
                                     onBlur={handleFormOnBlur}
                                 />
                                 <TextField
-                                    sx={{ width: "75%", m: 1 }}
+                                    id="outlined-basic"
+                                    variant="outlined"
+                                    sx={{ width: "100%", m: 1 }}
                                     type="password"
-                                    id="standard-basic"
                                     label="Conform Password"
-                                    variant="standard"
                                     name="password2"
                                     onBlur={handleFormOnBlur}
                                 />
                                 <Button
-                                    sx={{ width: "75%", m: 1 }}
+                                    sx={{ width: "100%", m: 1 }}
                                     type="submit"
                                     variant="contained"
+                                    style={{backgroundColor: '#1BA370'}}
                                 >
                                     REGISTER
                                 </Button>
                                 <button style={{ border: "none", background: "none" }}>
                                     Already Registered?{" "}
-                                    <Link to="/login">please login</Link>
+                                    <Link style={{color: 'rgb(27 163 112)'}} to="/login">please login</Link>
                                 </button>
                             </form>
                         }
 
-                        {user?.email && <Alert severity="success">Successfully Registered</Alert>}
-                        {authError && <Alert sx={{mt: 2}} severity="error">{authError}</Alert>}
-                        {loading && <CircularProgress sx={{textAlign: 'center', mt: 15}} />}
+                        <div style={{ margin: '0 auto', textAlign: 'left'}}>
+                            <hr style={{marginTop: '40px', marginBottom: '15px'}} />
+                            <Button
+                                style={{ textTransform: 'capitalize', marginLeft: '30px', backgroundColor: 'rgb(27 163 112)' }}
+                                onClick={handleGoogleSignIn}
+                                variant="contained"
+                            >Google SignIn</Button>
+                        </div>
+
+                        {user?.email && <Alert sx={{ mt: 3 }} severity="success">Successfully Registered</Alert>}
+                        {authError && <Alert sx={{ mt: 3 }} severity="error">{authError}</Alert>}
+                        <br />
+                        {loading && <CircularProgress sx={{textAlign: 'center', mt: 10}} />}
 
                     </Grid>
-                    <Grid item xs={12} md={6}>
-                        {/* <img style={{ width: "100%" }} src={login_img} alt="" /> */}
+                    <Grid item sx={{ mt: 0, textAlign: "center" }} xs={0} sm={3} md={3} >
                     </Grid>
                 </Grid>
             </Container>

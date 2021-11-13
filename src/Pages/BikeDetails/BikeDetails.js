@@ -28,19 +28,24 @@ const BikeDetails = () => {
 
     // send users booking form data
     const onSubmit = (data) => {
+        console.log(bike)
+
+        const { city, email, userName, phone } = data;
+        const { pic, name, price, description } = bike;
+        const status = "pending";
+        const order = {status, city, email, name, phone, pic, userName, price, description};
         fetch("http://localhost:4000/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(order),
         })
             .then((res) => res.json())
             .then((result) => {
                 
                 if (result.insertedId) {
-                    alert("Order processed Successfully");
-    
+                    alert("Order send Successfully");
                     reset();
                 }
             });
@@ -55,7 +60,7 @@ const BikeDetails = () => {
             })
     }, [])
 
-    // const { description, img, price, title} = bike;
+    
 
     return (
         <>
@@ -90,7 +95,7 @@ const BikeDetails = () => {
                                     <h2>Book Now</h2>
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-floating mb-3 mt-4">
-                                            <input {...register("name")} defaultValue={user?.displayName || users || ""} onChange={handleNameChange} type="text" className="form-control" id="floatingInput" required placeholder=" "/>
+                                            <input {...register("userName")} defaultValue={user?.displayName || users || ""} onChange={handleNameChange} type="text" className="form-control" id="floatingInput" required placeholder=" "/>
                                             <label htmlFor="floatingInput">Full Name</label>
                                         </div>
                                         <div className="form-floating mb-3">

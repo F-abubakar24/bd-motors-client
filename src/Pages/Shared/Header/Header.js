@@ -11,7 +11,7 @@ const Header = () => {
         <>
             <Navbar className="nav-Wrapper" collapseOnSelect expand="lg" sticky="top" style={{backgroundColor: "#1BA370"}} variant="dark">
                 <Container>
-                    <Navbar.Brand as={HashLink} to="/home"><img style={{width: '65%'}} src={logo} alt="" /></Navbar.Brand>
+                    <Navbar.Brand as={HashLink} to="/home"><img style={{width: '80%'}} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end nav_btn">
 
@@ -24,6 +24,7 @@ const Header = () => {
                         </NavDropdown> */}
                         <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
                         <Nav.Link as={HashLink} to="/bikes">Bikes</Nav.Link>
+                        {user?.email && <Nav.Link as={HashLink} to="/dashboard">Dashboard</Nav.Link>}
                         {user?.email ?
                             <>
                                 <p className="user_display_name">{user.displayName || user.email} -</p>

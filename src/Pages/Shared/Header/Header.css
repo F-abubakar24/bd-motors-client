@@ -24,6 +24,8 @@
 .nav_btn>a,
 .btn_nav_dropdown>a {
     color: white;
+    font-weight: 600;
+    font-size: 18px;
     padding: 4px 8px;
 }
 .nav_btn>a:focus,
@@ -43,3 +45,7 @@
 /* .form_container{
     padding-top: 100px;
 } */
+
+.active-style{
+    color: red;
+}

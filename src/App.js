@@ -8,6 +8,8 @@ import AuthProvider from "./context/AuthProvider/AuthProvider";
 import BikesMain from "./Pages/Bikes/BikesMain";
 import BikeDetails from "./Pages/BikeDetails/BikeDetails";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+// import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
             </Route>
             <PrivateRoute path="/bikeDetails/:bikeId">
               <BikeDetails></BikeDetails>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
             </PrivateRoute>
 
 
