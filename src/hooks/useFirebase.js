@@ -96,6 +96,7 @@ const useFirebase = () => {
 
     // save user data on data base
     const saveUser = (method, email, displayName, password) => {
+        setLoading(true)
         const user = { email, displayName, password };
         fetch("https://bd-motors.herokuapp.com/users", {
             method: method,
@@ -103,7 +104,7 @@ const useFirebase = () => {
                 "content-type": "application/json",
             },
             body: JSON.stringify(user),
-        }).then();
+        }).then().finally(() => setLoading(false));
     };
 
     // The recommended way to get the current user is by setting an observer on the Auth object:
@@ -127,6 +128,7 @@ const useFirebase = () => {
         fetch(`https://bd-motors.herokuapp.com/users/${user.email}`)
             .then((res) => res.json())
             .then((data) => setAdmin(data.Admin));
+        
     }, [user.email]);
 
     return {

@@ -36,6 +36,9 @@ import AddBusinessTwoToneIcon from "@mui/icons-material/AddBusinessTwoTone";
 import AddAProduct from "../AddAProduct/AddAProduct";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import SettingsApplicationsTwoToneIcon from "@mui/icons-material/SettingsApplicationsTwoTone";
+import OrderManage from "../OrderManage/OrderManage";
+import AnimationTwoToneIcon from '@mui/icons-material/AnimationTwoTone';
+
 
 const drawerWidth = 240;
 
@@ -283,6 +286,22 @@ const Dashboard = () => {
                                     </ListItemIcon>
                                 </ListItem>
                             </NavLink>
+
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/manageOrders`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <AnimationTwoToneIcon color="success" />
+                                        <span style={navLinkText}>Manage All Orders</span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
                         </>
                     )}
                     {/* ========================= My ADMIN route ============================== */}
@@ -347,6 +366,9 @@ const Dashboard = () => {
                     </AdminRoute>
                     <AdminRoute path={`${path}/manageProducts`}>
                         <ManageProducts></ManageProducts>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageOrders`}>
+                        <OrderManage></OrderManage>
                     </AdminRoute>
                     {/* ========================= My ADMIN route ============================== */}
 

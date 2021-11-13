@@ -4,9 +4,25 @@
 
 ## Bd Motors information
 
-- bike shop is the original no-haggle, no-hassle used bike superstore.
-- Investigating the bike’s History. Before You Buy, Research. Lookup Accidents & Damage. How to Check Hidden Info. Reveal Past Ownership.
-- Shop new & used bikes, research & compare models, find local dealers/sellers,calculate payments, value your bike, sell/trade in your bike & more at bikes.com.
-- bike Shops Limited is authorized and regulated by the Financial Conduct Authority (FCA) for consumer credit activities. 
-- bike Shop - Crunchbase Company Profile & Fundinghttps:/https://brothers-bike.web.app/ › organization › bike-shop
-bike Shop is the UK's leading bike supermarket with quality bikes for sale, with stores in ... Contact Email info@bikeshop.co.uk; Phone Number +08082743369
+- This is fully Responsive and dynamic website
+- This project is a single page application made by react
+- This Project is fullstack website and every data i load from database `mongodb`
+- This website has lot of feature example: ( `User Login System`, `user management dashboard`, `admin management dashboard`)
+- every users see his own data
+- admin have a spacial power to edit on this website
+
+### My using packages....
+
+##### Client Site
+- React
+- React Bootstrap
+- Meterial ui
+- Firebase for (`Login system`)
+- React router dom `v-5.3.0`
+
+
+##### Server site
+- MongoDb database
+- Express
+- Cors
+- dotenv

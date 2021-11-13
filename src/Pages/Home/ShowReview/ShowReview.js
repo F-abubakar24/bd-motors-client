@@ -10,7 +10,7 @@ const ShowReview = ({review}) => {
                 <Paper elevation={3} sx={{ py: 4 }}>
                     <Grid container spacing={2}>
                         <Grid item sx={{ mt: 0, textAlign: "center" }} xs={2} >
-                            <span className='user_icon'><i style={{fontSize: '35px', textAlign: 'center'}} class="fas fa-user"></i></span>
+                            <span className='user_icon'><i style={{fontSize: '35px', textAlign: 'center', marginTop: '15px'}} class="fas fa-user"></i></span>
                         </Grid>
                         <Grid item sx={{ mt: 0, textAlign: "center" }} xs={10} >
                             <Box style={{textAlign: 'left', borderLeft: '1px solid lightGray'}} sx={{pl: 2}}>

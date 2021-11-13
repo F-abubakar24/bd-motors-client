@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-copyright">
-                <p>© Website - 2022 | All Right Reserved. Designed By Website</p>
+                <p>© Website - 2022 | Full website made by developer Abu Bakar</p>
             </div>
         </>
     );

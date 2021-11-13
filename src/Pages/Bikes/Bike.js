@@ -13,7 +13,7 @@ const Bike = ({ product }) => {
                     <Card.Img className="service_img mx-auto" variant="top" src={pic} />
                     <Card.Body className="card_body">
                         <Card.Title className="">{name}</Card.Title>
-                        <Card.Text>
+                        <Card.Text style={{fontSize: '18px'}}>
                             {description}
                         </Card.Text>
                         <Link className="readmore_btn" to={`/bikeDetails/${_id}`}>Buy Now</Link>
