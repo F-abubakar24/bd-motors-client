@@ -6,6 +6,8 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import BikesMain from "./Pages/Bikes/BikesMain";
+import BikeDetails from "./Pages/BikeDetails/BikeDetails";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
             <Route path="/bikes">
               <BikesMain></BikesMain>
             </Route>
+            <PrivateRoute path="/bikeDetails/:bikeId">
+              <BikeDetails></BikeDetails>
+            </PrivateRoute>
 
 
           </Switch>

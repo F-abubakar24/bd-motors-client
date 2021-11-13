@@ -16,7 +16,7 @@ const Bike = ({ hotel }) => {
                         <Card.Text>
                             {description}
                         </Card.Text>
-                        <Link className="readmore_btn" to={`/hotelDetails/${_id}`}>Buy Now</Link>
+                        <Link className="readmore_btn" to={`/bikeDetails/${_id}`}>Buy Now</Link>
                         <p className="d-inline float-end fw-bold hotel-price">{"$"+price}</p>
                     </Card.Body>
                 </Card>
