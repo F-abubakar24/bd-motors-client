@@ -46,7 +46,9 @@ const Login = () => {
             </div>
             <Container>
                 <Grid container spacing={3}>
-                    +
+
+                    <Grid item sx={{ mt: 0, textAlign: "center" }} xs={0} sm={3} md={3} >
+                    </Grid>
                     <Grid item sx={{ mt: 10, textAlign: "center" }} xs={12} sm={6} md={6} >
                         <Typography variant="h5" gutterBottom>
                             Login
@@ -102,6 +104,7 @@ const Login = () => {
                     <Grid item sx={{ mt: 0, textAlign: "center" }} xs={0} sm={3} md={3} >
                     </Grid>
                 </Grid>
+                
             </Container>
         </>
     );

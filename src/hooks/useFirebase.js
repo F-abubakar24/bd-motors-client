@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import initializeAuthentication from '../Pages/Login/Firebase/Firebase.init';
+import { useState, useEffect } from "react";
+import initializeAuthentication from "../Pages/Login/Firebase/Firebase.init";
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -12,137 +12,122 @@ import {
     getIdToken,
 } from "firebase/auth";
 
-
 // initialize firebase app
 initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [loading, setLoading] = useState(true)
-    const [authError, setAuthError] = useState('');
-    const [admin, setAdmin] = useState(false)
-    const [token, setToken] = useState('');
-
+    const [loading, setLoading] = useState(true);
+    const [authError, setAuthError] = useState("");
+    const [admin, setAdmin] = useState(false);
+    const [token, setToken] = useState("");
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
-
-
-// Google popup Sign in system
+    // Google popup Sign in system
     const googleSignIn = (location, history) => {
-        setLoading(true)
+        setLoading(true);
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                setAuthError('')
-                const user = result.user
-                saveUser("PUT", user.email, user.displayName, null)
-                const destination = location?.state?.from || '/';
+                setAuthError("");
+                const user = result.user;
+                saveUser("PUT", user.email, user.displayName, null);
+                const destination = location?.state?.from || "/";
                 history.replace(destination);
-
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 setAuthError(error.message);
-            }).finally( () => setLoading(false) );
-    }
+            })
+            .finally(() => setLoading(false));
+    };
 
-
-
-// Register user using email password;
+    // Register user using email password;
     const createUser = (name, email, password, history) => {
-        setLoading(true)
+        setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                setAuthError('')
+                setAuthError("");
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 // save user to the database
-                saveUser('POST', email, name, password)
+                saveUser("POST", email, name, password);
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
-                    displayName: name
-                }).then(() => {
-                }).catch((error) => {
-                });
-                history.replace('/');
+                    displayName: name,
+                })
+                    .then(() => {})
+                    .catch((error) => {});
+                history.replace("/");
             })
             .catch((error) => {
                 setAuthError(error.message);
-            }).finally( () => setLoading(false) )
-    }
-
-
-
-// LogOut user;
-    const logOut = () => {
-        setLoading(true)
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        }).catch((error) => {
-            // An error happened.
-        }).finally(() => setLoading(false));
+            })
+            .finally(() => setLoading(false));
     };
 
+    // LogOut user;
+    const logOut = () => {
+        setLoading(true);
+        signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+            })
+            .catch((error) => {
+                // An error happened.
+            })
+            .finally(() => setLoading(false));
+    };
 
-
-// Login user
+    // Login user
     const loginUser = (email, password, location, history) => {
-        setLoading(true)
+        setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const destination = location?.state?.from || '/';
+                const destination = location?.state?.from || "/";
                 history.replace(destination);
-                setAuthError('');
+                setAuthError("");
             })
             .catch((error) => {
                 setAuthError(error.message);
-            }).finally( () => setLoading(false) )
-    }
+            })
+            .finally(() => setLoading(false));
+    };
 
-
-
-// save user data on data base
+    // save user data on data base
     const saveUser = (method, email, displayName, password) => {
         const user = { email, displayName, password };
-        fetch('https://doctors-portal-95794.herokuapp.com/users', {
+        fetch("https://bd-motors.herokuapp.com/users", {
             method: method,
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(user)
-        })
-            .then()
-    }
+            body: JSON.stringify(user),
+        }).then();
+    };
 
-
-
-// The recommended way to get the current user is by setting an observer on the Auth object:
+    // The recommended way to get the current user is by setting an observer on the Auth object:
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                getIdToken(user)
-                    .then(idToken => {
-                        setToken(idToken)
-                    })
+                getIdToken(user).then((idToken) => {
+                    setToken(idToken);
+                });
             } else {
-                setUser({})
+                setUser({});
             }
             setLoading(false);
         });
         return () => unSubscribe;
-    }, [auth])
+    }, [auth]);
 
-// load real ADMIN data
+    // load real ADMIN data
     useEffect(() => {
-        fetch(`https://doctors-portal-95794.herokuapp.com/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => setAdmin(true))
-    }, [user.email])
-
-
-
-
-
+        fetch(`https://bd-motors.herokuapp.com/users/${user.email}`)
+            .then((res) => res.json())
+            .then((data) => setAdmin(data.Admin));
+    }, [user.email]);
 
     return {
         user,
@@ -154,7 +139,7 @@ const useFirebase = () => {
         logOut,
         loginUser,
         googleSignIn,
-    }
+    };
 };
 
 export default useFirebase;

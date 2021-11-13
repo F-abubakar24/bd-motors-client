@@ -19,17 +19,23 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import PaymentIcon from "@mui/icons-material/Payment";
 import HomeIcon from "@mui/icons-material/Home";
-import LogoutIcon from '@mui/icons-material/Logout';
-import ReviewsIcon from '@mui/icons-material/Reviews';
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import LogoutIcon from "@mui/icons-material/Logout";
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import { NavLink } from "react-router-dom";
 import { Image, Navbar } from "react-bootstrap";
 import "./Dashboard.css";
 import Pay from "../Pay/Pay";
 import useAuth from "../../../hooks/useAuth";
-import logo from '../../../images/logo.png';
-import MyOrders from '../MyOrders/MyOrders';
+import logo from "../../../images/logo.png";
+import MyOrders from "../MyOrders/MyOrders";
 import Review from "../Review/Review";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import AddBusinessTwoToneIcon from "@mui/icons-material/AddBusinessTwoTone";
+import AddAProduct from "../AddAProduct/AddAProduct";
+import ManageProducts from "../ManageProducts/ManageProducts";
+import SettingsApplicationsTwoToneIcon from "@mui/icons-material/SettingsApplicationsTwoTone";
 
 const drawerWidth = 240;
 
@@ -85,11 +91,11 @@ const Dashboard = () => {
     const [open, setOpen] = React.useState(false);
 
     const navLinkText = {
-        marginLeft: '8px',
-        fontSize: '20px',
+        marginLeft: "8px",
+        fontSize: "20px",
         fontWeight: 900,
-        color: 'black'
-    }
+        color: "black",
+    };
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -100,7 +106,7 @@ const Dashboard = () => {
     };
 
     return (
-        <Box >
+        <Box>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
                 <Toolbar className="bg-success layout-top">
@@ -113,20 +119,13 @@ const Dashboard = () => {
                             sx={{ mr: 2, ...(open && { display: "none" }) }}
                         >
                             <MenuIcon />
-                            
                         </IconButton>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                        >
-                            <img style={{ width: '75%' }} src={logo} alt="" />
+                        <Typography variant="h6" noWrap component="div">
+                            <img style={{ width: "75%" }} src={logo} alt="" />
                         </Typography>
                     </>
                     <Typography variant="h6" noWrap component="div">
-                        <Navbar.Text className="text-info_lol text-light fw-bold">
-
-                        </Navbar.Text>
+                        <Navbar.Text className="text-info_lol text-light fw-bold"></Navbar.Text>
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -157,7 +156,15 @@ const Dashboard = () => {
 
 
 
-                    <NavLink style={{ textDecoration: "none", color: "black", marginLeft: "5px", }} to="/home">
+
+                    <NavLink
+                        style={{
+                            textDecoration: "none",
+                            color: "black",
+                            marginLeft: "5px",
+                        }}
+                        to="/home"
+                    >
                         <ListItem button>
                             <ListItemIcon>
                                 <HomeIcon color="success" />
@@ -166,34 +173,131 @@ const Dashboard = () => {
                         </ListItem>
                     </NavLink>
 
-                    <NavLink style={{ textDecoration: "none", color: "black", marginLeft: "5px", }} to={`${url}/myOrders`}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <DeliveryDiningIcon color="success" />
-                                <span style={navLinkText}>My Orders</span>
-                            </ListItemIcon>
-                        </ListItem>
-                    </NavLink>
+                    {/* ========================= My USER route ============================== */}
+                    { !admin && (
+                        <>
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/myOrders`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <DeliveryDiningIcon color="success" />
+                                        <span style={navLinkText}>
+                                            My Orders
+                                        </span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
 
-                    <NavLink style={{ textDecoration: "none", color: "black", marginLeft: "5px", }} to={`${url}/review`}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <ReviewsIcon color="success" />
-                                <span style={navLinkText}>Give a Review</span>
-                            </ListItemIcon>
-                        </ListItem>
-                    </NavLink>
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/review`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <ReviewsIcon color="success" />
+                                        <span style={navLinkText}>
+                                            Give a Review
+                                        </span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
 
-                    <NavLink style={{ textDecoration: "none", color: "black", marginLeft: "5px", }} to={`${url}/pay`}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <PaymentIcon color="success" />
-                                <span style={navLinkText}>Pay</span>
-                            </ListItemIcon>
-                        </ListItem>
-                    </NavLink>
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/pay`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <PaymentIcon color="success" />
+                                        <span style={navLinkText}>Pay</span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
+                        </>
+                    )}
+                    {/* ========================= My USER route ============================== */}
 
-                    <NavLink style={{ textDecoration: "none", color: "black", marginLeft: "5px", }} to={`${url}`} onClick={logOut}>
+                    
+
+                    {/* ========================= My ADMIN route ============================== */}
+                    { admin && (
+                        <>
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/makeAdmin`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <PaymentIcon color="success" />
+                                        <span style={navLinkText}>Make Admin</span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
+
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/addProduct`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                    <AddBusinessTwoToneIcon color="success" />
+                                        <span style={navLinkText}>Add A Product</span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
+
+                            <NavLink
+                                style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                    marginLeft: "5px",
+                                }}
+                                to={`${url}/manageProducts`}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                    <SettingsApplicationsTwoToneIcon color="success" />
+                                        <span style={navLinkText}>Manage Products</span>
+                                    </ListItemIcon>
+                                </ListItem>
+                            </NavLink>
+                        </>
+                    )}
+                    {/* ========================= My ADMIN route ============================== */}
+
+                    
+
+                    <NavLink
+                        style={{
+                            textDecoration: "none",
+                            color: "black",
+                            marginLeft: "5px",
+                        }}
+                        to={`${url}`}
+                        onClick={logOut}
+                    >
                         <ListItem button>
                             <ListItemIcon>
                                 <LogoutIcon color="success" />
@@ -204,10 +308,12 @@ const Dashboard = () => {
 
 
 
+
+
                 </List>
             </Drawer>
             <Box
-                style={{margin: '0 auto'}}
+                style={{ margin: "0 auto" }}
                 component="main"
                 sx={{
                     flexGrow: 1,
@@ -230,6 +336,21 @@ const Dashboard = () => {
                     <Route path={`${path}/pay`}>
                         <Pay></Pay>
                     </Route>
+
+                    
+                    {/* ========================= My ADMIN route ============================== */}
+                    <AdminRoute path={`${path}/makeAdmin`}>
+                        <MakeAdmin></MakeAdmin>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addProduct`}>
+                        <AddAProduct></AddAProduct>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProducts`}>
+                        <ManageProducts></ManageProducts>
+                    </AdminRoute>
+                    {/* ========================= My ADMIN route ============================== */}
+
+
                 </Switch>
             </Box>
             <Main open={open}>

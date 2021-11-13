@@ -2,14 +2,11 @@ import React from 'react';
 import { Grid, Paper, Rating, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-const Review = ({review}) => {
+const ShowReview = ({review}) => {
     const { userName, email, text, rating } = review;
-    const [openBooking, setOpenBooking] = React.useState(false);
-    const handleBookingOpen = () => setOpenBooking(true);
-    const handleBookingClose = () => setOpenBooking(false);
     return (
         <>
-            <Grid item xs={12} sm={6} md={6} sx={{py: 3, px: 1}} style={{textAlign: 'center'}}>
+            <Grid item xs={12} sm={6} md={6} sx={{ py: 3, px: 1 }} style={{ textAlign: 'center' }}>
                 <Paper elevation={3} sx={{ py: 4 }}>
                     <Grid container spacing={2}>
                         <Grid item sx={{ mt: 0, textAlign: "center" }} xs={2} >
@@ -32,4 +29,4 @@ const Review = ({review}) => {
     );
 };
 
-export default Review;
+export default ShowReview;

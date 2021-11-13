@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import "./Review.css";
-import Typography from '@mui/material/Typography';
-import Rating from '@mui/material/Rating';
+import Typography from "@mui/material/Typography";
+import Rating from "@mui/material/Rating";
 
 const Review = () => {
     const [review, setReview] = useState({});
@@ -28,11 +28,11 @@ const Review = () => {
 
     // send users booking form data
     const onSubmit = (data) => {
-        const { email, text, userName } = data
+        const { email, text, userName } = data;
         const rating = value;
-        const review = { email, text, userName, rating }
-        
-        fetch("http://localhost:4000/review", {
+        const review = { email, text, userName, rating };
+
+        fetch("https://bd-motors.herokuapp.com/review", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -98,10 +98,10 @@ const Review = () => {
                                         placeholder=" "
                                     />
                                     <label htmlFor="floatingInput">
-                                        Right something about us.....
+                                        Write something about us.....
                                     </label>
                                 </div>
-                                <div style={{textAlign: 'left'}}>
+                                <div style={{ textAlign: "left" }}>
                                     <Typography component="legend">
                                         Rating
                                     </Typography>
