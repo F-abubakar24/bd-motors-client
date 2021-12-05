@@ -14,7 +14,7 @@ const ShowReviews = () => {
     return (
         <Container style={{ marginTop: "100px" }}>
             <h2 className="text-center mt-5 mb-3 bottom_underline underline-style">
-                Our Bikes
+                Our Reviews
             </h2>
             <Typography
                 variant="h4"
